@@ -1,47 +1,102 @@
-# ConceptOps
+<p align="center">
+  <img src="./conceptops/assets/conceptops-mark.svg" width="88" height="88" alt="ConceptOps mark">
+</p>
 
-**From a rough idea to a decision you can use.**
+<h1 align="center">ConceptOps</h1>
 
-ConceptOps is an open Agent Skill for researching a short, messy, or incomplete request, choosing a sensible next step, and producing the files needed to act on it.
+<p align="center">
+  <strong>Make the idea earn the build.</strong><br>
+  From a rough request to a researched decision and the files needed to act on it.
+</p>
+
+<p align="center">
+  <a href="https://github.com/uginy/conceptops/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/uginy/conceptops?style=flat-square&label=release&labelColor=0B1220&color=D7FF64"></a>
+  <a href="https://agentskills.io/specification"><img alt="Agent Skills format" src="https://img.shields.io/badge/format-Agent%20Skill-7AB8FF?style=flat-square&labelColor=0B1220"></a>
+  <a href="./LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/uginy/conceptops?style=flat-square&labelColor=0B1220&color=FF9D66"></a>
+  <a href="./evals/scenarios.md"><img alt="Three eval scenarios" src="https://img.shields.io/badge/evals-3%20scenarios-F4F1E8?style=flat-square&labelColor=0B1220"></a>
+  <img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime%20dependencies-none-F4F1E8?style=flat-square&labelColor=0B1220">
+</p>
+
+<p align="center">
+  <a href="#see-the-difference">Demo</a> |
+  <a href="#the-route">Workflow</a> |
+  <a href="#output-components">Outputs</a> |
+  <a href="#install">Install</a> |
+  <a href="#examples">Examples</a> |
+  <a href="#evaluation">Evaluation</a>
+</p>
+
+<p align="center">
+  <img src="./assets/conceptops-hero.webp" width="100%" alt="A rough line becomes a decision map and three usable outputs">
+</p>
+
+ConceptOps is an open Agent Skill for product discovery, feature planning, technology evaluation, market research, feasibility checks, unit economics, validation, prototyping, documentation, presentations, websites, brand systems, and visual concepts.
+
+Give it a short, messy request. It finds the relevant context, separates facts from assumptions, compares realistic options, tests the key unknowns, makes a decision, and creates only the outputs needed for the next step.
+
+It is one portable skill folder. There is no CLI to learn, hosted service to trust, account to create, or runtime dependency to maintain.
+
+## See the difference
+
+### You provide
 
 ```text
-rough idea -> clarification -> context -> options -> validation
-           -> decision -> outputs -> usage summary
+offline search. private. 20k markdown notes. no cloud.
+what should we use? implementation can wait.
 ```
 
-It works for new ideas, changes to existing projects, technology choices, feasibility checks, economics, prototypes, presentations, websites, documentation, reports, brand systems, and visual concepts.
+### ConceptOps turns it into
 
-Version: **0.1.0**
+```text
+Mode:       technology decision
+Goal:       choose a private local search approach
+Constraints: one laptop, no cloud, no always-running service
 
-## Why ConceptOps
+Compare:    current project -> native features -> installed tools
+            -> mature libraries -> minimal custom work
 
-ConceptOps starts with the decision that needs to be made. It checks the relevant context, records what is unknown, compares the simplest viable options, and writes only the files needed for the next step.
+Decision:   Go / Conditional / Freeze
+Proof:      a measurable retrieval-quality experiment
+Outputs:    task brief + solution blueprint + sources + usage summary
+```
 
-This repository contains one skill folder. It has no CLI, hosted service, workflow builder, or runtime dependency.
+No invented requirements. No five-layer architecture. No polished landing page before the idea has earned one.
 
-## How It Works
+## The route
 
-1. **Language:** asks for the work language and applies it to conversation, subagents, artifacts, captions, and generated-image text.
-2. **Intent:** accepts a fragment and turns it into a structured task brief.
-3. **Context:** researches the real project, market, technology, or operating environment.
-4. **Options:** compares reuse, native features, installed dependencies, mature external options, and minimal custom work.
-5. **Validation:** separates facts from assumptions and tests the riskiest unknown.
-6. **Decision:** returns `Go`, `Conditional`, or `Freeze`.
-7. **Outputs:** creates only the selected components.
-8. **Summary:** explains what was made, why, how to use it, and what to do next.
+<p align="center">
+  <img src="./assets/conceptops-workflow.svg" width="100%" alt="ConceptOps workflow from rough request through context, options, decision, and selected outputs">
+</p>
 
-Runs are saved under `.ideas/<slug>/`. ConceptOps ensures `.ideas/` is ignored before writing.
+1. **Ask:** choose the work language and accept the request as written.
+2. **Map:** inspect the project, market, technology, evidence, and constraints that matter.
+3. **Compare:** climb from reuse and native features to external libraries and minimal custom work.
+4. **Validate:** mark facts, estimates, hypotheses, and assumptions; test the riskiest unknown.
+5. **Decide:** return `Go`, `Conditional`, or `Freeze`.
+6. **Make:** create only the selected outputs and explain how to use them.
 
-## Output Components
+Every run is saved under `.ideas/<slug>/` with a task brief, source list, selected artifacts, and short usage summary.
 
-Choose one or combine several with AND/OR semantics:
+## Built for real work
 
-| Component | Result |
+- **Messy input is expected.** A fragment is enough to begin.
+- **Existing projects come first.** ConceptOps reads the real codebase, instructions, dependencies, patterns, and affected flow before recommending a change.
+- **Reuse beats invention.** It checks current capabilities, native platform features, and installed dependencies before adding anything.
+- **Current claims need current sources.** Prices, regulations, competitors, libraries, and benchmarks are researched instead of guessed.
+- **Facts stay separate from assumptions.** Calculations use formulas; unsupported precision is rejected.
+- **Effort follows risk.** Stronger models, deeper reasoning, and specialist subagents are used only where they can change the decision.
+- **External actions stay gated.** Production deployment, purchases, and public release require explicit authorization.
+
+## Output components
+
+Choose one component or combine several with AND/OR semantics. ConceptOps recommends the smallest useful set after it understands the task.
+
+| Component | What it leaves behind |
 | --- | --- |
-| Brief report | Concise evidence, risks, verdict, and next action |
+| Brief report | Evidence, risks, verdict, and next action |
 | Presentation | Editable decision narrative |
-| Website | Landing source and local preview |
-| Documentation | Only the product, technical, API, user, or operations docs required |
+| Website | Landing page source and local preview |
+| Documentation | Product, technical, API, user, or operations documents |
 | Brand book | Positioning, voice, visual direction, and reusable tokens |
 | Unit economics | Editable assumptions, scenarios, formulas, and sensitivity |
 | Research pack | Sourced market, customer, competitor, or technology evidence |
@@ -50,86 +105,111 @@ Choose one or combine several with AND/OR semantics:
 | Go-to-market | Segment, positioning, channels, experiments, and metrics |
 | Solution blueprint | Project-grounded implementation options and recommendation |
 
-Every run also produces a short usage summary.
-
-## Example Invocations
-
-```text
-Use $conceptops. I have a half-formed idea for reducing food waste in small cafés.
-```
-
-```text
-Use $conceptops to decide how to add offline search to this project. I want a
-solution blueprint and a low-fidelity prototype. Work in English.
-```
-
-```text
-Use $conceptops. Our onboarding is confusing. Figure out what is wrong, compare
-the smallest fixes, and give me a validation kit OR a prototype depending on
-which uncertainty matters most.
-```
-
-See the fully synthetic examples in [`examples/`](examples/).
+Every package includes `summary.md`: what was created, why it exists, how to use it, what remains uncertain, and what to do next.
 
 ## Install
 
-### Codex: user scope
+### Open Agent Skills CLI
 
-Clone the repository, then copy the skill folder into Codex's user skill location:
+Install ConceptOps globally and select your agent:
 
 ```bash
-git clone https://github.com/YOUR_ORG/conceptops.git
+npx skills add uginy/conceptops -g
+```
+
+Install directly for Codex:
+
+```bash
+npx skills add uginy/conceptops -g -a codex
+```
+
+The command is provided by the open [`skills`](https://github.com/vercel-labs/skills) CLI. Use `npx skills add uginy/conceptops --list` to inspect the skill before installing it.
+
+### Manual Codex install
+
+```bash
+git clone https://github.com/uginy/conceptops.git
 mkdir -p "$HOME/.agents/skills"
 cp -R conceptops/conceptops "$HOME/.agents/skills/conceptops"
 ```
 
 Invoke it with `$conceptops`. Codex detects skill changes automatically; restart Codex if it does not appear.
 
-### Codex: repository scope
+For repository-only use, copy the `conceptops/` folder to `.agents/skills/conceptops` inside that repository.
 
-To make it available only inside one repository:
+### Other clients
 
-```bash
-mkdir -p .agents/skills
-cp -R /path/to/cloned/conceptops/conceptops .agents/skills/conceptops
+The [`conceptops/`](./conceptops/) directory follows the open [Agent Skills specification](https://agentskills.io/specification). Install that folder where your client discovers skills. Client-specific features and discovery rules vary, so this project does not claim untested compatibility.
+
+## Examples
+
+```text
+Use $conceptops. English. Maybe a tiny service that helps independent cafés
+predict tomorrow's pastry waste? I don't know if owners would use another app.
+Give me the smallest useful package.
 ```
 
-Codex documents user skills at `$HOME/.agents/skills` and repository skills at `.agents/skills`. See the official [Codex skill documentation](https://learn.chatgpt.com/docs/build-skills).
+```text
+Use $conceptops. Work in English. The filtering screen in this inventory app is
+slow and confusing. Decide whether we should replace the current table library.
+I need a solution blueprint AND a low-fidelity prototype, but no code changes.
+```
 
-### Other Agent Skills clients
+```text
+Use $conceptops. English. Need private semantic search across roughly 20,000
+Markdown notes on one laptop. No cloud and no always-running service. Help me
+choose an approach; implementation can wait.
+```
 
-The `conceptops/` directory follows the open [Agent Skills specification](https://agentskills.io/specification). Install that directory in the location documented by your client. Compatibility and discovery behavior vary by client, so this project does not claim support for clients it has not tested.
+See the complete synthetic examples:
 
-## Repository Layout
+- [Rough product idea](./examples/rough-product-idea.md)
+- [Existing-project change](./examples/existing-project-change.md)
+- [Technology decision](./examples/technology-decision.md)
+
+## Visual modes
+
+ConceptOps chooses the visual mode by what the artifact needs to prove:
+
+1. A real screenshot with a tutorial overlay for exact current behavior.
+2. A project-faithful mockup for a realistic product extension.
+3. A structural wireframe for flow or layout.
+4. A creative or AAA concept when the task calls for open visual exploration.
+
+It can match an existing product closely without forcing every creative task into the current UI style.
+
+## Evaluation
+
+[`evals/scenarios.md`](./evals/scenarios.md) contains three compact synthetic scenarios:
+
+- rough request and output restraint;
+- existing-project reuse and scope boundaries;
+- language consistency and AND/OR component selection.
+
+These are behavioral contracts, not claims of universal model performance. The skill structure is also checked with the validator bundled with OpenAI's Skill Creator.
+
+## Repository layout
 
 ```text
 conceptops/
+├── assets/
 ├── conceptops/
 │   ├── agents/openai.yaml
 │   ├── references/
 │   └── SKILL.md
 ├── evals/
 ├── examples/
-├── .gitignore
 ├── LICENSE
 ├── README.md
 └── SECURITY.md
 ```
 
-## Design Principles
+## Security and privacy
 
-- Research the decision before producing polished outputs.
-- Reuse current project patterns before adding dependencies.
-- Prefer KISS and YAGNI over custom architecture.
-- Label facts, estimates, hypotheses, and assumptions.
-- Run specialist or parallel subagents only when they add real value.
-- Match model strength and reasoning to the task's cost and risk.
-- Require explicit authorization for production deployment or public release.
+ConceptOps is instruction-only and has no backend or telemetry. The skill still treats external writes, public release, production access, private data, money, medical or legal decisions, minors, and physical actions as explicit trust boundaries.
 
-## Evaluation
-
-[`evals/scenarios.md`](evals/scenarios.md) contains three compact synthetic scenarios covering a rough product idea, an existing-project change, and a technology decision. They are behavioral contracts, not claims of universal model performance.
+Report vulnerabilities through GitHub's private vulnerability reporting. See [SECURITY.md](./SECURITY.md).
 
 ## License
 
-MIT. See [`LICENSE`](LICENSE).
+MIT. See [LICENSE](./LICENSE).
