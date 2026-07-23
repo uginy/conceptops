@@ -12,6 +12,9 @@
 <p align="center">
   <a href="https://github.com/uginy/conceptops/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/uginy/conceptops?style=flat-square&label=release&labelColor=0B1220&color=D7FF64"></a>
   <a href="https://agentskills.io/specification"><img alt="Agent Skills format" src="https://img.shields.io/badge/format-Agent%20Skill-7AB8FF?style=flat-square&labelColor=0B1220"></a>
+  <a href="#compatibility"><img alt="Codex supported" src="https://img.shields.io/badge/Codex-supported-D7FF64?style=flat-square&labelColor=0B1220&logo=openai&logoColor=F4F1E8"></a>
+  <a href="#compatibility"><img alt="Claude Code 2.0.20 or newer" src="https://img.shields.io/badge/Claude%20Code-2.0.20%2B-FF9D66?style=flat-square&labelColor=0B1220&logo=anthropic&logoColor=F4F1E8"></a>
+  <a href="#compatibility"><img alt="GitHub Copilot supported" src="https://img.shields.io/badge/GitHub%20Copilot-supported-7AB8FF?style=flat-square&labelColor=0B1220&logo=githubcopilot&logoColor=F4F1E8"></a>
   <a href="./LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/uginy/conceptops?style=flat-square&labelColor=0B1220&color=FF9D66"></a>
   <a href="./evals/scenarios.md"><img alt="Three eval scenarios" src="https://img.shields.io/badge/evals-3%20scenarios-F4F1E8?style=flat-square&labelColor=0B1220"></a>
   <img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime%20dependencies-none-F4F1E8?style=flat-square&labelColor=0B1220">
@@ -21,6 +24,7 @@
   <a href="#see-the-difference">Demo</a> |
   <a href="#the-route">Workflow</a> |
   <a href="#output-components">Outputs</a> |
+  <a href="#compatibility">Compatibility</a> |
   <a href="#install">Install</a> |
   <a href="#examples">Examples</a> |
   <a href="#evaluation">Evaluation</a>
@@ -34,7 +38,7 @@ ConceptOps is an open Agent Skill for product discovery, feature planning, techn
 
 Give it a short, messy request. It finds the relevant context, separates facts from assumptions, compares realistic options, tests the key unknowns, makes a decision, and creates only the outputs needed for the next step.
 
-It is one portable skill folder. There is no CLI to learn, hosted service to trust, account to create, or runtime dependency to maintain.
+Install the same portable skill in OpenAI Codex, Claude Code, or GitHub Copilot. There is no hosted service to trust, account to create, or runtime dependency to maintain.
 
 ## See the difference
 
@@ -107,39 +111,67 @@ Choose one component or combine several with AND/OR semantics. ConceptOps recomm
 
 Every package includes `summary.md`: what was created, why it exists, how to use it, what remains uncertain, and what to do next.
 
+## Compatibility
+
+ConceptOps works as a native Agent Skill in:
+
+| Host | Status | Surfaces | Version |
+| --- | --- | --- | --- |
+| [OpenAI Codex](https://learn.chatgpt.com/docs/build-skills) | First-class | App, CLI, and IDE extension | Current stable |
+| [Claude Code](https://code.claude.com/docs/en/skills) | First-class | CLI and IDE integrations | 2.0.20 or newer |
+| [GitHub Copilot](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) | First-class | Cloud agent, code review, CLI, app, VS Code, and JetBrains | Current stable |
+
+ConceptOps uses the portable core of the open Agent Skills specification: a `SKILL.md` file, YAML metadata, relative references, and bundled assets. It does not depend on host-specific hooks, subagent fields, or shell permissions. The optional `agents/openai.yaml` file adds presentation metadata in Codex and is ignored by other hosts.
+
+No single minimum version is published across every Codex and GitHub Copilot surface, so current stable releases are recommended. Claude Code added Skills support in `2.0.20`.
+
 ## Install
 
-### Open Agent Skills CLI
+### All three hosts
 
-Install ConceptOps globally and select your agent:
+Install ConceptOps globally for Codex, Claude Code, and GitHub Copilot:
 
 ```bash
-npx skills add uginy/conceptops -g
+npx skills add uginy/conceptops -g -a codex -a claude-code -a github-copilot
 ```
 
-Install directly for Codex:
+The command is provided by the open [`skills`](https://github.com/vercel-labs/skills) CLI. Use `npx skills add uginy/conceptops --list` to inspect the skill before installing it.
+
+### Codex
 
 ```bash
 npx skills add uginy/conceptops -g -a codex
 ```
 
-The command is provided by the open [`skills`](https://github.com/vercel-labs/skills) CLI. Use `npx skills add uginy/conceptops --list` to inspect the skill before installing it.
+Invoke with `$conceptops` or select it from `/skills`.
 
-### Manual Codex install
+### Claude Code
 
 ```bash
-git clone https://github.com/uginy/conceptops.git
-mkdir -p "$HOME/.agents/skills"
-cp -R conceptops/conceptops "$HOME/.agents/skills/conceptops"
+npx skills add uginy/conceptops -g -a claude-code
 ```
 
-Invoke it with `$conceptops`. Codex detects skill changes automatically; restart Codex if it does not appear.
+Invoke with `/conceptops` or let Claude load it when the request matches.
 
-For repository-only use, copy the `conceptops/` folder to `.agents/skills/conceptops` inside that repository.
+### GitHub Copilot
 
-### Other clients
+```bash
+npx skills add uginy/conceptops -g -a github-copilot
+```
 
-The [`conceptops/`](./conceptops/) directory follows the open [Agent Skills specification](https://agentskills.io/specification). Install that folder where your client discovers skills. Client-specific features and discovery rules vary, so this project does not claim untested compatibility.
+Invoke with `/conceptops` in Copilot CLI or let Copilot load it when relevant.
+
+### Manual install
+
+Copy the [`conceptops/`](./conceptops/) directory into the host's personal or project skills folder:
+
+| Host | Personal | Project |
+| --- | --- | --- |
+| Codex | `~/.agents/skills/conceptops` | `.agents/skills/conceptops` |
+| Claude Code | `~/.claude/skills/conceptops` | `.claude/skills/conceptops` |
+| GitHub Copilot | `~/.copilot/skills/conceptops` | `.github/skills/conceptops` |
+
+Restart the host only if the newly installed skill does not appear.
 
 ## Examples
 
