@@ -1,0 +1,4 @@
+interface:
+  display_name: "ConceptOps"
+  short_description: "Research rough ideas and choose what to build"
+  default_prompt: "Use $conceptops to research this rough idea, compare the options, and produce only the outputs needed for the next decision."
