@@ -70,7 +70,7 @@ No invented requirements. No five-layer architecture. No polished landing page b
 ## The route
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["Rough request"] --> B["Research the real context"]
     B --> C["Compare options<br/>and test the key unknown"]
     C --> D{"Go / Conditional / Freeze"}
