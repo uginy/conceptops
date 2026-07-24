@@ -16,7 +16,7 @@
   <a href="#compatibility"><img alt="Claude Code 2.0.20 or newer" src="https://img.shields.io/badge/Claude%20Code-2.0.20%2B-FF9D66?style=flat-square&labelColor=0B1220&logo=anthropic&logoColor=F4F1E8"></a>
   <a href="#compatibility"><img alt="GitHub Copilot supported" src="https://img.shields.io/badge/GitHub%20Copilot-supported-7AB8FF?style=flat-square&labelColor=0B1220&logo=githubcopilot&logoColor=F4F1E8"></a>
   <a href="./LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/uginy/conceptops?style=flat-square&labelColor=0B1220&color=FF9D66"></a>
-  <a href="./evals/scenarios.md"><img alt="Four eval scenarios" src="https://img.shields.io/badge/evals-4%20scenarios-F4F1E8?style=flat-square&labelColor=0B1220"></a>
+  <a href="./evals/scenarios.md"><img alt="Five eval scenarios" src="https://img.shields.io/badge/evals-5%20scenarios-F4F1E8?style=flat-square&labelColor=0B1220"></a>
   <img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime%20dependencies-none-F4F1E8?style=flat-square&labelColor=0B1220">
 </p>
 
@@ -38,6 +38,8 @@
 ConceptOps is an open Agent Skill for product discovery, feature planning, technology evaluation, market research, feasibility checks, unit economics, validation, prototyping, documentation, presentations, websites, brand systems, and visual concepts.
 
 Give it a short, messy request. It finds the relevant context, separates facts from assumptions, compares realistic options, tests the key unknowns, makes a decision, and creates only the outputs needed for the next step.
+
+When the task is already a clear implementation, it steps aside: the host executes directly, without questions or `.ideas/` artifacts.
 
 Install the same portable skill in OpenAI Codex, Claude Code, or GitHub Copilot. There is no hosted service to trust, account to create, or runtime dependency to maintain.
 
@@ -71,29 +73,33 @@ No invented requirements. No five-layer architecture. No polished landing page b
 
 ```mermaid
 flowchart TD
-    A["Rough prompt"] --> B["Normalize intent,<br/>context, and constraints"]
-    B --> C["Select the strategy<br/>and output set"]
-    C --> D{Would independent parallel<br/>or specialist work help?}
-    D -->|Yes| E["Run bounded specialist<br/>subagents in parallel"]
-    D -->|No| F["Execute directly"]
-    E --> G["Main agent consolidates evidence,<br/>resolves conflicts, and decides"]
-    F --> G
-    G --> H["Write structured outputs<br/>to .ideas/&lt;slug&gt;/"]
+    A["Request"] --> B{Needs discovery,<br/>evidence, or a decision?}
+    B -->|No| X["Direct execution<br/>No ConceptOps run files"]
+    B -->|Yes| C["Normalize intent,<br/>context, and constraints"]
+    C --> D["Select the strategy<br/>and output set"]
+    D --> E{Would independent parallel<br/>or specialist work help?}
+    E -->|Yes| F["Run bounded specialist<br/>subagents in parallel"]
+    E -->|No| G["Main agent handles<br/>the run directly"]
+    F --> H["Main agent consolidates evidence,<br/>resolves conflicts, and decides"]
+    G --> H
+    H --> I["Write structured outputs<br/>to .ideas/&lt;slug&gt;/"]
 ```
 
 <p align="center">
   <a href="./FLOW_DIAGRAM.md"><strong>Detailed flow diagram</strong></a>
 </p>
 
-1. **Normalize:** preserve the request while making its objective, context, constraints, and unknowns explicit.
-2. **Select:** choose the smallest useful output set, evidence plan, and execution strategy.
-3. **Delegate:** use bounded specialist subagents only when independent work can run in parallel or improve the decision.
-4. **Consolidate:** keep the main agent responsible for conflicts, evidence, verdict, and final artifacts.
-5. **Persist:** write the manifest, brief, sources, selected outputs, and usage summary under `.ideas/<slug>/`.
+1. **Gate:** bypass ConceptOps when the request already needs only direct implementation.
+2. **Normalize:** preserve the request while making its objective, context, constraints, and unknowns explicit.
+3. **Select:** choose the smallest useful output set, evidence plan, and execution strategy.
+4. **Delegate:** use bounded specialist subagents only when independent work can run in parallel or improve the decision.
+5. **Consolidate:** keep the main agent responsible for conflicts, evidence, verdict, and final artifacts.
+6. **Persist:** write the manifest, brief, sources, selected outputs, and usage summary under `.ideas/<slug>/`.
 
 ## Built for real work
 
 - **Messy input is expected.** A fragment is enough to begin.
+- **Clear work stays direct.** Well-scoped implementation bypasses the ConceptOps workflow.
 - **Existing projects come first.** ConceptOps reads the real codebase, instructions, dependencies, patterns, and affected flow before recommending a change.
 - **Reuse beats invention.** It checks current capabilities, native platform features, and installed dependencies before adding anything.
 - **Current claims need current sources.** Prices, regulations, competitors, libraries, and benchmarks are researched instead of guessed.
@@ -209,6 +215,7 @@ See expected direction and pass conditions in [`evals/scenarios.md`](./evals/sce
 - [Existing-project change](./evals/scenarios.md#2-existing-project-change)
 - [Technology decision](./evals/scenarios.md#3-technology-decision)
 - [Language contract and AND/OR](./evals/scenarios.md#4-language-contract-and-andor-components)
+- [Direct execution scope gate](./evals/scenarios.md#5-direct-execution-scope-gate)
 
 ## Visual modes
 
@@ -229,6 +236,7 @@ It can match an existing product closely without forcing every creative task int
 - existing-project reuse and scope boundaries;
 - technology decision without premature implementation;
 - language consistency and AND/OR component selection.
+- direct execution without ConceptOps ceremony or run files.
 
 These are behavioral contracts, not claims of universal model performance. The skill structure is also checked with the validator bundled with OpenAI's Skill Creator.
 
@@ -239,6 +247,7 @@ conceptops/
 ├── assets/
 ├── conceptops/
 │   ├── agents/openai.yaml
+│   ├── assets/
 │   ├── references/
 │   └── SKILL.md
 ├── FLOW_DIAGRAM.md

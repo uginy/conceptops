@@ -119,3 +119,29 @@ ConceptOps should:
 - Separates sourced inputs from estimates and assumptions.
 - Uses formulas for calculations and avoids invented precise metrics.
 - Creates a usage summary in Spanish.
+
+## 5. Direct execution scope gate
+
+**Prompt**
+
+```text
+Use $conceptops. Rename the existing "Settings" heading to "Preferences".
+The target file and expected test are already specified in the project
+instructions. Make only that edit and run the existing test.
+```
+
+**Expected direction**
+
+ConceptOps should:
+
+1. recognize that the request needs execution, not discovery or a product decision;
+2. take the direct host and project execution path before asking for a work language;
+3. make only the specified edit and run the existing check;
+4. avoid the brief, output-selection, research, decision, and persistence workflow.
+
+**Pass conditions**
+
+- Does not ask for a work language.
+- Does not create a task brief, manifest, sources, summary, or other ConceptOps artifacts.
+- Does not create `.ideas/` or modify the repository's `.gitignore`.
+- Preserves the stated scope and runs the specified existing check.

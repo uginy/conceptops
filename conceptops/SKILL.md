@@ -1,11 +1,23 @@
 ---
 name: conceptops
-description: Research a rough request, turn it into a clear task brief, compare realistic options, test key assumptions, choose a next step, and produce the files needed to act. Use for new ideas, product or feature work, changes to existing systems, technology choices, feasibility research, unit economics, prototypes, presentations, websites, documentation, reports, brand systems, and images.
+description: Research a rough or consequential request, turn it into a clear brief, compare realistic options, test key assumptions, choose a next step, and produce the files needed to act. Use when a product, feature, system, technology, business, communication, or visual request still needs discovery, evidence, validation, a decision, or artifact selection before execution. Do not use for direct implementation of a clear, well-scoped task, routine fixes, simple edits, or requests that already specify the solution and only need execution.
 ---
 
 # ConceptOps
 
 Turn an unfinished thought into a clear next step.
+
+## Apply the Scope Gate
+
+Before asking for the work language, decide whether ConceptOps can change the decision.
+
+If the request is already a clear, well-scoped implementation, routine fix, or simple edit and does not ask for research, validation, planning, or additional artifacts:
+
+- skip the ConceptOps workflow;
+- follow the host and project instructions for direct execution;
+- do not ask the language question or create `.ideas/` files.
+
+Continue when the user explicitly requests ConceptOps analysis or artifacts, or when the request still needs a consequential choice.
 
 ## Start Every Run
 
@@ -54,7 +66,7 @@ For an existing project, inspect the real repository before recommending a solut
 4. Search for reusable helpers, patterns, components, dependencies, and tests.
 5. Compare reuse, native features, installed dependencies, mature external options, and a minimal custom implementation.
 
-Read [references/project-decisions.md](references/project-decisions.md) for the full solution and visual-mode rules.
+Read [references/project-decisions.md](references/project-decisions.md) when the task involves an existing project, replacement or migration, a solution choice, implementation planning, or a visual artifact.
 
 ## Recommend Outputs
 
@@ -104,7 +116,18 @@ Use:
 - `Conditional` when a cheap experiment can resolve a decisive unknown;
 - `Freeze` when current evidence does not justify further investment.
 
-For validation, economics, sourcing, and final quality gates, read [references/validation-and-economics.md](references/validation-and-economics.md).
+Read [references/validation-and-economics.md](references/validation-and-economics.md) when the run needs external research, validation, decision scoring, or unit economics.
+
+## Verify Before Delivery
+
+Before delivery:
+
+- confirm that selected outputs match the brief and that no unselected or placeholder components were created;
+- source important current claims and keep facts, estimates, and assumptions visibly distinct;
+- check arithmetic and cross-artifact numbers for agreement;
+- open created files, keep editable formats editable, and render or inspect visual artifacts when possible;
+- align terminology, positioning, calls to action, verdict, and selected language;
+- ensure `summary.md` links to every artifact and explains how to use it.
 
 ## Persist the Run
 
@@ -112,7 +135,7 @@ Write structured results to `.ideas/<slug>/` at the relevant repository root, or
 
 Before writing:
 
-1. Ensure `.ideas/` is present in the target repository's `.gitignore`.
+1. When using `.ideas/` inside a Git repository, check whether it is already ignored. If not, add `.ideas/` to `.git/info/exclude`. Do not modify a tracked `.gitignore` unless the user explicitly asks.
 2. Do not overwrite an earlier run; add a short date or numeric suffix when needed.
 3. Honor an explicit output location from the user instead.
 

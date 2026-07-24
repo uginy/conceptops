@@ -58,19 +58,3 @@ Use transparent inputs and formulas:
 - simple ROI = (benefit - investment) / investment.
 
 Use conservative, base, and upside scenarios. Show units, source or rationale, confidence, and sensitivity to the two most decisive assumptions. Never invent precise acquisition cost, conversion, churn, market share, or growth inputs.
-
-## Final Verification
-
-Before delivery, check:
-
-- selected outputs match the brief;
-- every important current claim has a source;
-- facts, estimates, and assumptions are visibly distinct;
-- arithmetic and cross-artifact numbers agree;
-- files open and editable formats remain editable;
-- visual artifacts were rendered or inspected when possible;
-- visuals match their declared mode;
-- terminology, positioning, calls to action, and verdict agree;
-- all user-facing text follows the selected language;
-- no unselected or placeholder components were created;
-- `summary.md` links to every artifact and explains how to use it.

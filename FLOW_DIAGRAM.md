@@ -6,7 +6,10 @@ This diagram maps the complete ConceptOps run from a rough request to a verified
 
 ```mermaid
 flowchart TD
-    A([Rough request]) --> B{Work language explicit?}
+    A([Request]) --> A1{Does it need discovery, evidence,<br/>validation, a decision, or artifact selection?}
+    A1 -->|No| A2["Follow the host and project instructions<br/>Execute the clear, well-scoped task directly"]
+    A2 --> A3([No ConceptOps run files])
+    A1 -->|Yes| B{Work language explicit?}
     B -->|No| B1[Ask only for the work language]
     B1 --> B2([Wait for answer])
     B2 --> C
@@ -58,7 +61,7 @@ flowchart TD
         L1 --> M
         M["Resolve AND / OR rules<br/>Always include summary · exclude unselected components"]
         M --> M1["Selected component contracts<br/>brief-report · presentation · website · documentation · brand-book<br/>unit-economics · research-pack · validation-kit · prototype<br/>go-to-market · solution-blueprint"]
-        M1 --> N["Prepare the output location before writing<br/>Honor an explicit location, otherwise use .ideas/&lt;unique-slug&gt;/<br/>Ensure .ideas/ is ignored · never overwrite an earlier run"]
+        M1 --> N["Prepare the output location before writing<br/>Honor an explicit location, otherwise use .ideas/&lt;unique-slug&gt;/<br/>If needed, ignore it in .git/info/exclude · never overwrite an earlier run<br/>Do not change tracked .gitignore without an explicit request"]
         N --> N1["Write run-manifest.md and task-brief.md<br/>Record language · mode · assumptions · components · planned files · status"]
     end
 
@@ -160,21 +163,21 @@ flowchart TD
     classDef conditional fill:#7AB8FF,stroke:#0B1220,color:#0B1220,stroke-width:2px;
     classDef freeze fill:#FF9D66,stroke:#0B1220,color:#0B1220,stroke-width:2px;
 
-    class A,AL start;
-    class B,D,H,L,Q,S,T,U,V,Y,AC,AC1,AE,AE1,AH gate;
+    class A,A3,AL start;
+    class A1,B,D,H,L,Q,S,T,U,V,Y,AC,AC1,AE,AE1,AH gate;
     class B2,D2,H2,L3,AE2,AE3 wait;
     class Y1 go;
     class Y2 conditional;
     class Y3 freeze;
-    class C,C1,D1,E,F,F1,F1B,F2,F3,F4,F5,G,H1,I,J,K,L1,L2,M,M1,N,N1,O,P1,P2,P3,Q1,Q2,Q3,Q4,Q5,R,S1,S2,T1,T2,T3,U1,V1,W,X,Z,Z1,Z2,AA,AB,AC2,AD,AF,AF1,AG,AH1,AI,AJ,AK action;
+    class A2,C,C1,D1,E,F,F1,F1B,F2,F3,F4,F5,G,H1,I,J,K,L1,L2,M,M1,N,N1,O,P1,P2,P3,Q1,Q2,Q3,Q4,Q5,R,S1,S2,T1,T2,T3,U1,V1,W,X,Z,Z1,Z2,AA,AB,AC2,AD,AF,AF1,AG,AH1,AI,AJ,AK action;
 ```
 
 ## Source map
 
-- Start, language contract, operating rules, effort routing, subagents, decision loop, persistence, and delivery: [`conceptops/SKILL.md`](./conceptops/SKILL.md)
+- Scope gate, language contract, operating rules, effort routing, subagents, decision loop, persistence, verification, and delivery: [`conceptops/SKILL.md`](./conceptops/SKILL.md)
 - Context modes, evidence order, task brief, and question policy: [`context-and-brief.md`](./conceptops/references/context-and-brief.md)
 - Component selection, artifact contracts, and branching behavior: [`output-components.md`](./conceptops/references/output-components.md)
 - Repository discovery, solution ladder, visual modes, and implementation boundary: [`project-decisions.md`](./conceptops/references/project-decisions.md)
-- Research integrity, decision gate, experiments, economics, and final verification: [`validation-and-economics.md`](./conceptops/references/validation-and-economics.md)
+- Research integrity, decision gate, experiments, and economics: [`validation-and-economics.md`](./conceptops/references/validation-and-economics.md)
 
 The diagram summarizes these documents. The linked files remain the normative instructions.
