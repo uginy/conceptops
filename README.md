@@ -23,6 +23,7 @@
 <p align="center">
   <a href="#see-the-difference">Demo</a> |
   <a href="#the-route">Workflow</a> |
+  <a href="./FLOW_DIAGRAM.md">Flow diagram</a> |
   <a href="#output-components">Outputs</a> |
   <a href="#compatibility">Compatibility</a> |
   <a href="#install">Install</a> |
@@ -68,8 +69,19 @@ No invented requirements. No five-layer architecture. No polished landing page b
 
 ## The route
 
+```mermaid
+flowchart LR
+    A["Rough request"] --> B["Map the real context"]
+    B --> C["Choose the smallest useful output set"]
+    C --> D["Research and compare practical options"]
+    D --> E["Test the decisive assumption"]
+    E --> F{"Go / Conditional / Freeze"}
+    F --> G["Create only what the decision needs"]
+    G --> H["Usable next step"]
+```
+
 <p align="center">
-  <img src="./assets/conceptops-workflow.svg" width="100%" alt="ConceptOps workflow from rough request through context, options, decision, and selected outputs">
+  <a href="./FLOW_DIAGRAM.md"><strong>Detailed flow diagram</strong></a>
 </p>
 
 1. **Ask:** choose the work language and accept the request as written.
@@ -229,6 +241,7 @@ conceptops/
 │   ├── agents/openai.yaml
 │   ├── references/
 │   └── SKILL.md
+├── FLOW_DIAGRAM.md
 ├── evals/
 ├── examples/
 ├── LICENSE
