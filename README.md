@@ -71,13 +71,10 @@ No invented requirements. No five-layer architecture. No polished landing page b
 
 ```mermaid
 flowchart LR
-    A["Rough request"] --> B["Map the real context"]
-    B --> C["Choose the smallest useful output set"]
-    C --> D["Research and compare practical options"]
-    D --> E["Test the decisive assumption"]
-    E --> F{"Go / Conditional / Freeze"}
-    F --> G["Create only what the decision needs"]
-    G --> H["Usable next step"]
+    A["Rough request"] --> B["Research the real context"]
+    B --> C["Compare options<br/>and test the key unknown"]
+    C --> D{"Go / Conditional / Freeze"}
+    D --> E["Create only the outputs<br/>needed for the next step"]
 ```
 
 <p align="center">
