@@ -16,7 +16,7 @@
   <a href="#compatibility"><img alt="Claude Code 2.0.20 or newer" src="https://img.shields.io/badge/Claude%20Code-2.0.20%2B-FF9D66?style=flat-square&labelColor=0B1220&logo=anthropic&logoColor=F4F1E8"></a>
   <a href="#compatibility"><img alt="GitHub Copilot supported" src="https://img.shields.io/badge/GitHub%20Copilot-supported-7AB8FF?style=flat-square&labelColor=0B1220&logo=githubcopilot&logoColor=F4F1E8"></a>
   <a href="./LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/uginy/conceptops?style=flat-square&labelColor=0B1220&color=FF9D66"></a>
-  <a href="./evals/scenarios.md"><img alt="Three eval scenarios" src="https://img.shields.io/badge/evals-3%20scenarios-F4F1E8?style=flat-square&labelColor=0B1220"></a>
+  <a href="./evals/scenarios.md"><img alt="Four eval scenarios" src="https://img.shields.io/badge/evals-4%20scenarios-F4F1E8?style=flat-square&labelColor=0B1220"></a>
   <img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime%20dependencies-none-F4F1E8?style=flat-square&labelColor=0B1220">
 </p>
 
@@ -203,11 +203,12 @@ Markdown notes on one laptop. No cloud and no always-running service. Help me
 choose an approach; implementation can wait.
 ```
 
-See the complete synthetic examples:
+See expected direction and pass conditions in [`evals/scenarios.md`](./evals/scenarios.md):
 
-- [Rough product idea](./examples/rough-product-idea.md)
-- [Existing-project change](./examples/existing-project-change.md)
-- [Technology decision](./examples/technology-decision.md)
+- [Rough product idea](./evals/scenarios.md#1-rough-product-idea)
+- [Existing-project change](./evals/scenarios.md#2-existing-project-change)
+- [Technology decision](./evals/scenarios.md#3-technology-decision)
+- [Language contract and AND/OR](./evals/scenarios.md#4-language-contract-and-andor-components)
 
 ## Visual modes
 
@@ -222,10 +223,11 @@ It can match an existing product closely without forcing every creative task int
 
 ## Evaluation
 
-[`evals/scenarios.md`](./evals/scenarios.md) contains three compact synthetic scenarios:
+[`evals/scenarios.md`](./evals/scenarios.md) holds the synthetic demos and behavioral contracts in one place: prompt, expected direction, and pass conditions for each scenario.
 
-- rough request and output restraint;
+- rough product idea and output restraint;
 - existing-project reuse and scope boundaries;
+- technology decision without premature implementation;
 - language consistency and AND/OR component selection.
 
 These are behavioral contracts, not claims of universal model performance. The skill structure is also checked with the validator bundled with OpenAI's Skill Creator.
@@ -241,7 +243,6 @@ conceptops/
 │   └── SKILL.md
 ├── FLOW_DIAGRAM.md
 ├── evals/
-├── examples/
 ├── LICENSE
 ├── README.md
 └── SECURITY.md
