@@ -1,7 +1,7 @@
 interface:
   display_name: "ConceptOps"
   short_description: "Research rough ideas and choose what to build"
-  icon_small: "./assets/conceptops-mark.svg"
-  icon_large: "./assets/conceptops-mark.svg"
+  icon_small: "./assets/conceptops-small.svg"
+  icon_large: "./assets/conceptops.png"
   brand_color: "#0B1220"
-  default_prompt: "Use $conceptops to research this rough idea, compare the options, and produce only the outputs needed for the next decision."
+  default_prompt: "Research this rough idea, compare the options, and produce only the outputs needed for the next decision."
