@@ -71,24 +71,25 @@ No invented requirements. No five-layer architecture. No polished landing page b
 
 ```mermaid
 flowchart TD
-    A["Rough request"] --> B["Research the real context"]
-    B --> C["Compare options<br/>and test the key unknown"]
-    C --> D{"Go / Conditional / Freeze"}
-    D --> E["Create only the outputs<br/>needed for the next step"]
+    A["Rough prompt"] --> B["Normalize intent,<br/>context, and constraints"]
+    B --> C["Select the strategy<br/>and output set"]
+    C --> D{Would independent parallel<br/>or specialist work help?}
+    D -->|Yes| E["Run bounded specialist<br/>subagents in parallel"]
+    D -->|No| F["Execute directly"]
+    E --> G["Main agent consolidates evidence,<br/>resolves conflicts, and decides"]
+    F --> G
+    G --> H["Write structured outputs<br/>to .ideas/&lt;slug&gt;/"]
 ```
 
 <p align="center">
   <a href="./FLOW_DIAGRAM.md"><strong>Detailed flow diagram</strong></a>
 </p>
 
-1. **Ask:** choose the work language and accept the request as written.
-2. **Map:** inspect the project, market, technology, evidence, and constraints that matter.
-3. **Compare:** climb from reuse and native features to external libraries and minimal custom work.
-4. **Validate:** mark facts, estimates, hypotheses, and assumptions; test the riskiest unknown.
-5. **Decide:** return `Go`, `Conditional`, or `Freeze`.
-6. **Make:** create only the selected outputs and explain how to use them.
-
-Every run is saved under `.ideas/<slug>/` with a task brief, source list, selected artifacts, and short usage summary.
+1. **Normalize:** preserve the request while making its objective, context, constraints, and unknowns explicit.
+2. **Select:** choose the smallest useful output set, evidence plan, and execution strategy.
+3. **Delegate:** use bounded specialist subagents only when independent work can run in parallel or improve the decision.
+4. **Consolidate:** keep the main agent responsible for conflicts, evidence, verdict, and final artifacts.
+5. **Persist:** write the manifest, brief, sources, selected outputs, and usage summary under `.ideas/<slug>/`.
 
 ## Built for real work
 
